@@ -6,13 +6,17 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Posts:</h1>
     <div>
-      {% for post in posts %}
-        <h2>{{ post.title }}</h2>
-        <p>By {{ post.author }}</p>
-        <p>{{ post.content }}</p>
-      {% endfor %}
+      {% if posts %}
+        <h1>Posts:</h1>
+        {% for post in posts %}
+          <h2>{{ post.title }}</h2>
+          <p>By {{ post.author }}</p>
+          <p>{{ post.content }}</p>
+        {% endfor %}
+      {% else %}
+        <h2>Erro ao obter posts</h2>
+      {% endif %}
     </div>
   </body>
 </html>

@@ -5,5 +5,8 @@ import json
 
 
 def index(request):
-    context = requests.get("http://127.0.0.1:8002/posts/").json()
+    try:
+        context = requests.get("http://127.0.0.1:8002/posts/").json()
+    except requests.exceptions.ConnectionError:
+        return render(request, 'index.html', context={})
     return render(request, 'index.html', context=context)
